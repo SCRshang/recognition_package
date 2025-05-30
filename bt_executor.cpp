@@ -36,7 +36,8 @@ namespace aw_decision
         /* register nodes */
         factory_->registerNodeType<aw_decision::GameStart>("GameStart");
 
-        factory_->registerNodeType<aw_decision::GoalPub>("GoalPub");
+        auto ros_node = std::make_shared<rclcpp::Node>("bt_main_node");
+        factory.registerNodeType<GoalPub>("GoalPub", ros_node);
 
         if (save_xml_en_)
         {
