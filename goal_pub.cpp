@@ -4,8 +4,7 @@
 namespace aw_decision
 {
     GoalPub::GoalPub(const std::string &name, const BT::NodeConfiguration &config)
-        : BT::SyncActionNode(name, std::bind(&GoalPub::tick, this), config),
-          node_(std::make_shared<rclcpp::Node>("goal_pub_node"))
+        : BT::SyncActionNode(name, config), node_(node))
     {
         publisher_ = node_->create_publisher<position_2d_type::Position2D>("/goal_pose", 10);
     }
